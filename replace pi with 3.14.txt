@@ -1,0 +1,42 @@
+void replacePi(char input[])
+{
+      // Base condition
+    // if the string is empty
+    // or of length one
+    if (input[0] == '\0') {
+        return;
+    }
+    
+    
+    int n=0;
+     while(input[n]!='\0')
+     {
+         n++;
+     }
+ 
+    // Getting the answer from
+    // recursion for the smaller
+    // problem
+    
+ 
+    // Small calculation part
+    // if the first character is 'p'
+    // and the first character of the part
+    // passed to recursion is 'i' then replace
+    // "pi" with "3.14"
+    if (input[0] == 'p' && input[1] == 'i') {
+        // Shifting the characeters to
+        // right side to put 3.14 in
+        // the character array
+        for (int i = n; i >= 2; i--)
+            input[i + 2] = input[i];
+ 
+        // Replacing with "3.14"
+        input[0] = '3';
+    	input[1] = '.';
+        input[2] = '1';
+        input[3] = '4';
+    }
+    replacePi(input+1);
+}
+ 

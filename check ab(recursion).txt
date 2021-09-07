@@ -1,0 +1,49 @@
+
+bool helper(char input[])
+
+{
+    if(input[0]=='\0')
+    {
+        return true;
+    }
+    if(input[0]=='a'&& input[1]=='b')
+    {
+        
+        if(input[2]!='b')
+        {
+            
+            return false;
+        }
+        else
+        {
+            
+            bool smalloutput=helper(input+3);
+            return smalloutput;
+        }
+    }
+    
+      if(input[0] == 'b' && input[1] == 'a')
+    {
+        return false;
+        
+    }
+    
+    else
+    {
+        int smallOutput2 =helper(input + 2);
+        return smallOutput2;
+}
+}
+
+
+bool checkAB(char input[]) {
+if(input[0]=='b')
+{
+    return false;
+}
+bool output=helper(input);
+    return output;
+}
+
+
+

@@ -1,0 +1,52 @@
+
+int partition(int arr[],int size)
+{
+    int t=arr[0],count=0;
+    int i;
+    for(i=0;i<size;i++)
+    {
+        if(arr[i]<t)
+            count++;
+    }
+    
+    int temp;
+    temp=t;
+    arr[0]=arr[count];
+    arr[count]=temp;
+    
+    i=0;
+    int j=size-1;
+    while(i<count&&j>count)
+    {
+        if(arr[i]<arr[count])
+            i++;
+        else if(arr[j]>=arr[count])
+            j--;
+        else
+        {
+            int tem;
+            tem=arr[i];
+            arr[i]=arr[j];
+            arr[j]=tem;
+            i++;j--;
+        }
+    }
+    
+    
+    return count;
+}
+
+void quickSort(int input[], int size) {
+  /* Don't write main().
+     Don't read input, it is passed as function argument.
+     Change in the given array itself.
+     Taking input and printing output is handled automatically.
+  */
+if(size==1||size==0)
+    return;
+    
+    int index=partition(input,size);
+    quickSort(input,index);
+    quickSort(input+index+1,size-index-1);
+    
+}

@@ -1,0 +1,15 @@
+
+#include<string.h>
+#include<math.h>
+int stringToNumber(char input[]) {
+    // Write your code here
+    int length=strlen(input);
+    if(length==1)
+    {
+        return input[0]-'0'; 
+        // we can also write int z=input [0] - '0' or 48 and then return z
+    }
+    int recursion_int=stringToNumber(input+1);
+    int our_int=input[0]-'0';
+    return (our_int*pow(10,length-1))+recursion_int;
+}
