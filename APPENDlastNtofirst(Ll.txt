@@ -1,0 +1,25 @@
+Node*  appendLastNToFirst(Node* head,int n)
+{
+    if(head==NULL or n==0)
+        return head;
+    int len=0;
+    Node* temp=head;
+    while(temp!=NULL){    ///
+        temp=temp->next;
+        len++;
+    }
+    temp = head;
+    for(int i=1; i<len-n; i++){   //
+        temp=temp->next;
+    }
+    Node* curr=temp;
+    Node* curr1=curr->next;
+    temp = curr1;    //
+    curr->next=NULL;
+    while(curr1->next!=NULL){
+        curr1=curr1->next;
+    }
+    curr1->next=head;
+    head = temp;      //
+    return head;
+}

@@ -1,0 +1,65 @@
+/****************************************************************
+ 
+    Following is the class structure of the Node class:
+
+        class Node
+        {
+        public:
+	        int data;
+	        Node *next;
+	        Node(int data)
+	        {
+		        this->data = data;
+		        this->next = NULL;
+	        }
+        };
+
+*****************************************************************/
+Node *reverse(Node *head){
+    Node *curr=head;
+    Node *prev=NULL;
+    Node *fwd=NULL;
+    while(curr!=NULL){
+        fwd=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=fwd;
+    }
+    return prev;
+}
+bool isPalindrome(Node *head)
+{
+    //Write your code here
+if(head==NULL||head->next==NULL){
+    return true;
+}
+  // find the centre
+    Node *fast=head;
+    Node *slow=head;
+    while((fast->next!=NULL)&&(fast->next->next!=NULL)){
+        fast=fast->next->next;
+        slow=slow->next;
+    }
+    Node *secondhead=slow->next;
+    slow->next=NULL;
+    secondhead=reverse(secondhead);
+    Node *firstsub = head;
+    Node *secondsub = secondhead;
+    bool ans=true;
+    while(secondsub!=NULL){
+        if(firstsub->data!=secondsub->data){
+            ans=false;
+            break;
+        }
+        firstsub=firstsub->next;
+        secondsub=secondsub->next;
+    }
+    firstsub=head;
+    secondsub=reverse(secondhead);
+    while(firstsub->next!=NULL){
+        firstsub= firstsub->next;
+    }
+     firstsub->next=secondsub;
+    return ans;
+    
+}

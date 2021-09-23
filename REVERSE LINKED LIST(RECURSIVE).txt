@@ -1,0 +1,17 @@
+void printReverse(Node *head)
+{
+    //Write your code here
+
+    Node* temp=head;
+    if(temp==NULL)
+    {
+        return;
+    }
+    printReverse(temp->next);
+    cout<<head->data<<" ";
+
+
+
+
+
+}
