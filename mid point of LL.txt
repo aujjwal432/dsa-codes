@@ -1,0 +1,15 @@
+Node *midPoint(Node *head)
+{ if(head==NULL || head->next==NULL)
+{
+return  head;
+
+}
+    // Write your code here
+     Node *fast=head;
+    Node *slow=head;
+    while((fast->next!=NULL)&&(fast->next->next!=NULL)){
+        fast=fast->next->next;
+        slow=slow->next;
+    }
+    return slow;
+}

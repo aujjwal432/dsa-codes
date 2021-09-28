@@ -1,0 +1,22 @@
+
+Node *reverseLinkedListRec(Node *head)
+{
+    //Write your code here
+    if(head==NULL)
+    {
+        return head;
+    }
+    if(head->next==NULL)
+        return head;
+Node* small=reverseLinkedListRec(head->next);
+    
+Node* temp=small;
+    while(temp-> next != NULL){
+        
+        temp=temp->next;
+        
+    }
+temp->next=head;
+    head->next=NULL;
+    return small;
+}
